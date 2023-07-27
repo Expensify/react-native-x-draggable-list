@@ -1,7 +1,7 @@
 {
-  "name": "react-native-x-maps",
-  "version": "1.0.5",
-  "description": "A cross platform compatible map component for React-Native",
+  "name": "react-native-x-draggable-list",
+  "version": "1.0.0",
+  "description": "A cross platform compatible draggable list component for React-Native",
   "main": "index.js",
   "scripts": {
     "build": "echo \"Warning: no build process has been specified yet\"",
@@ -12,19 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Expensify/react-native-x-maps.git"
+    "url": "git+https://github.com/Expensify/react-native-x-draggable-list.git"
   },
   "keywords": [
     "React",
     "React-Native",
-    "Map"
+    "Draggable List"
   ],
   "author": "Expensify, Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Expensify/react-native-x-maps/issues"
+    "url": "https://github.com/Expensify/react-native-x-draggable-list/issues"
   },
-  "homepage": "https://github.com/Expensify/react-native-x-maps#readme",
+  "homepage": "https://github.com/Expensify/react-native-x-draggable-list#readme",
   "devDependencies": {
     "@babel/core": "7.20.12",
     "@babel/preset-env": "^7.20.2",

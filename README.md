@@ -1,4 +1,4 @@
-# `react-native-x-maps`
+# `react-native-x-draggable-list`
 
 # Deploying
 This repo automatically publishes to NPM when PRs are merged to main.

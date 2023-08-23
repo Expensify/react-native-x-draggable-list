@@ -10,5 +10,5 @@ export type DraggableListProps = {
   renderItem: (params: RenderItemParams<Item>) => React.ReactNode;
   onDragEnd?: (params: { data: Item[] }) => void;
   onDragBegin?: () => void;
-  onPlaceholderIndexChange?: (params: { index: number }) => void;
+  onPlaceholderIndexChange?: ((placeholderIndex: number) => void) | undefined;
 };

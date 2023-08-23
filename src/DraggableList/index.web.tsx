@@ -4,6 +4,7 @@ import {
   Droppable,
   Draggable,
   type OnDragEndResponder,
+  type OnDragUpdateResponder,
 } from 'react-beautiful-dnd';
 import { View } from 'react-native';
 import type { DraggableListProps, Item } from './types';
@@ -31,6 +32,7 @@ export const DraggableList = ({
   renderItem,
   onDragEnd: onDragEndCallback,
   onDragBegin: onDragBegin,
+  onPlaceholderIndexChange,
 }: DraggableListProps) => {
   const onDragEnd: OnDragEndResponder = useCallback(
     (result) => {
@@ -49,8 +51,23 @@ export const DraggableList = ({
     [items, onDragEndCallback]
   );
 
+  const onDragUpdate: OnDragUpdateResponder = useCallback(
+    (result) => {
+      if (!result.destination) {
+        return;
+      }
+      onPlaceholderIndexChange &&
+        onPlaceholderIndexChange(result.destination.index);
+    },
+    [onPlaceholderIndexChange]
+  );
+
   return (
-    <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragBegin}>
+    <DragDropContext
+      onDragEnd={onDragEnd}
+      onDragStart={onDragBegin}
+      onDragUpdate={onDragUpdate}
+    >
       <Droppable droppableId="droppable">
         {(droppableProvided) => (
           <View

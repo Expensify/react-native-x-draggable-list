@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import { StyleSheet, SafeAreaView, Platform, StatusBar } from 'react-native';
-import { MyButton } from 'react-native-awesome-module';
+import { MyDraggableList } from 'react-native-awesome-module';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const getItems = (count: number) =>
@@ -17,7 +17,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={[styles.container]}>
       <SafeAreaView style={[styles.container, styles.androidSafeArea]}>
-        <MyButton items={items} setData={setItems} />
+        <MyDraggableList items={items} setData={setItems} />
       </SafeAreaView>
     </GestureHandlerRootView>
   );

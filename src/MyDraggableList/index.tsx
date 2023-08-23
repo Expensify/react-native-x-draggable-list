@@ -4,20 +4,9 @@ import DraggableFlatList, {
   ScaleDecorator,
   type RenderItemParams,
 } from 'react-native-draggable-flatlist';
+import type { Item, Props } from './types';
 
-export type Item = {
-  id: string;
-  content: string;
-};
-
-export type Props = {
-  items: Item[];
-  setData: (data: Item[]) => void;
-};
-
-export const MyButton = ({ items, setData }: Props) => {
-  console.log('items', items);
-
+export const MyDraggableList = ({ items, setData }: Props) => {
   const renderItem = ({ item, drag, isActive }: RenderItemParams<Item>) => {
     return (
       <ScaleDecorator>

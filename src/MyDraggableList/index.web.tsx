@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { View } from 'react-native';
+import type { Item, Props } from './types';
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -32,17 +33,7 @@ const getListStyle = (isDraggingOver) => ({
   width: 250,
 });
 
-export type Item = {
-  id: string;
-  content: string;
-};
-
-export type Props = {
-  items: Item[];
-  setData: (data: Item[]) => void;
-};
-
-export const MyButton = ({ items, setData }: Props) => {
+export const MyDraggableList = ({ items, setData }: Props) => {
   const onDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {

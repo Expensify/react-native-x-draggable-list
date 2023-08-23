@@ -42,8 +42,11 @@ export default function App() {
       <SafeAreaView style={[styles.container, styles.androidSafeArea]}>
         <MyDraggableList
           items={items}
-          setData={setItems}
           renderItem={renderItem}
+          onDragEnd={({ data }: any) => {
+            console.log('onDragEnd', data);
+            setItems(data);
+          }}
         />
       </SafeAreaView>
     </GestureHandlerRootView>

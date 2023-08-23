@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   DragDropContext,
   Droppable,
@@ -26,21 +26,28 @@ const reorder = ({ list, startIndex, endIndex }: ReoderParams) => {
   return result;
 };
 
-export const MyDraggableList = ({ items, setData, renderItem }: Props) => {
-  const onDragEnd: OnDragEndResponder = (result) => {
-    // dropped outside the list
-    if (!result.destination) {
-      return;
-    }
+export const MyDraggableList = ({
+  items,
+  renderItem,
+  onDragEnd: onDragEndCallback,
+}: Props) => {
+  const onDragEnd: OnDragEndResponder = useCallback(
+    (result) => {
+      // dropped outside the list
+      if (!result.destination) {
+        return;
+      }
 
-    const reorderedItems = reorder({
-      list: items,
-      startIndex: result.source.index,
-      endIndex: result.destination.index,
-    });
+      const reorderedItems = reorder({
+        list: items,
+        startIndex: result.source.index,
+        endIndex: result.destination.index,
+      });
 
-    setData(reorderedItems);
-  };
+      onDragEndCallback && onDragEndCallback({ data: reorderedItems });
+    },
+    [items, onDragEndCallback]
+  );
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

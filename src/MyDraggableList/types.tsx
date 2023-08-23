@@ -7,6 +7,6 @@ export type Item = {
 
 export type Props = {
   items: Item[];
-  setData: (data: Item[]) => void;
   renderItem: (params: RenderItemParams<Item>) => React.ReactNode;
+  onDragEnd?: (params: { data: Item[] }) => void;
 };

@@ -2,11 +2,11 @@ import React from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import type { Props } from './types';
 
-export const MyDraggableList = ({ items, setData, renderItem }: Props) => {
+export const MyDraggableList = ({ items, renderItem, onDragEnd }: Props) => {
   return (
     <DraggableFlatList
       data={items}
-      onDragEnd={({ data }) => setData(data)}
+      onDragEnd={onDragEnd}
       keyExtractor={(item) => item.id}
       renderItem={renderItem}
     />

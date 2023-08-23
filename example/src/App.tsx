@@ -35,14 +35,27 @@ const getItems = (count: number) =>
     },
   }));
 
+const getCurrentTime = () => {
+  return new Date().toLocaleTimeString();
+};
+
 export default function App() {
   const [items, setItems] = useState(getItems(15));
+  const [lastEvent, setLastEvent] = useState('Listening for events...');
+
+  const logEvent = (event: string) => {
+    setLastEvent(`${event} at ${getCurrentTime()}`);
+  };
 
   const renderItem = ({ item, drag, isActive }: any) => {
     const backgroundColor = isActive ? COLORS.ACTIVE : item.content.color;
     return (
       <MyScaleDecorator>
-        <TouchableOpacity onLongPress={drag} disabled={isActive}>
+        <TouchableOpacity
+          onLongPress={drag}
+          disabled={isActive}
+          onPress={() => logEvent(`onPress ${item.id}`)}
+        >
           <View
             style={[
               styles.rowItem,
@@ -62,16 +75,19 @@ export default function App() {
   return (
     <GestureHandlerRootView style={[styles.container, styles.backgroundDark]}>
       <SafeAreaView style={[styles.container, styles.androidSafeArea]}>
-        <Text style={styles.header}>Draggable demo</Text>
+        <View style={styles.header}>
+          <Text style={styles.title}>Draggable demo</Text>
+          <Text style={styles.logger}>{lastEvent}</Text>
+        </View>
         <MyDraggableList
           items={items}
           renderItem={renderItem}
           onDragEnd={({ data }: any) => {
-            console.log('onDragEnd', data);
+            logEvent('onDragEnd');
             setItems(data);
           }}
           onDragBegin={() => {
-            console.log('onDragBegin');
+            logEvent('onDragBegin');
           }}
         />
       </SafeAreaView>
@@ -106,12 +122,20 @@ const styles = StyleSheet.create({
     color: COLORS.SUBTITLE,
   },
   header: {
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingBottom: 20,
-    paddingTop: 20,
     backgroundColor: COLORS.DARK,
     color: COLORS.LIGHT,
+    paddingBottom: 10,
+  },
+  logger: {
+    fontSize: 16,
+    color: COLORS.LIGHT,
+    textAlign: 'center',
   },
 });

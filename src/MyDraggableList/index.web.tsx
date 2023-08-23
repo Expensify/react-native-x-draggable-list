@@ -52,15 +52,18 @@ export const MyDraggableList = ({
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable">
-        {(provided, snapshot) => (
-          <View {...provided.droppableProps} ref={provided.innerRef}>
+        {(droppableProvided) => (
+          <View
+            {...droppableProvided.droppableProps}
+            ref={droppableProvided.innerRef}
+          >
             {items.map((item, index) => (
               <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided, snapshot) => (
+                {(draggableProvided, snapshot) => (
                   <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
+                    ref={draggableProvided.innerRef}
+                    {...draggableProvided.draggableProps}
+                    {...draggableProvided.dragHandleProps}
                   >
                     {renderItem({
                       item,
@@ -72,7 +75,7 @@ export const MyDraggableList = ({
                 )}
               </Draggable>
             ))}
-            {provided.placeholder}
+            {droppableProvided.placeholder}
           </View>
         )}
       </Droppable>

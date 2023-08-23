@@ -1,3 +1,3 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+import 'react-native-gesture-handler';
+
+export { MyButton } from './MyButton';

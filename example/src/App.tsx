@@ -14,6 +14,7 @@ import { DraggableList, ScaleDecorator } from 'react-native-x-draggable-list';
 import type { RenderItemParams } from 'react-native-draggable-flatlist';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import type { Item } from 'src/DraggableList/types';
+import * as Haptics from 'expo-haptics';
 
 const COLORS = {
   LIST: ['#FAF1E4', '#CEDEBD', '#9EB384'],
@@ -40,6 +41,8 @@ const getItems = (count: number) =>
 const getCurrentTime = () => {
   return new Date().toLocaleTimeString();
 };
+
+const isNative = Platform.OS === 'ios' || Platform.OS === 'android';
 
 export default function App() {
   const [items, setItems] = useState(getItems(15));
@@ -82,9 +85,25 @@ export default function App() {
           onDragEnd={({ data }: any) => {
             logEvent('onDragEnd');
             setItems(data);
+            if (isNative) {
+              Haptics.notificationAsync(
+                Haptics.NotificationFeedbackType.Success
+              );
+            }
           }}
           onDragBegin={() => {
             logEvent('onDragBegin');
+            if (isNative) {
+              Haptics.notificationAsync(
+                Haptics.NotificationFeedbackType.Success
+              );
+            }
+          }}
+          onPlaceholderIndexChange={(index: number) => {
+            logEvent(`onPlaceholderIndexChange ${index}`);
+            if (isNative) {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            }
           }}
         />
       </SafeAreaView>

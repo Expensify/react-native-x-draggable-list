@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import { MyDraggableList } from 'react-native-awesome-module';
+import { MyDraggableList, MyScaleDecorator } from 'react-native-awesome-module';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const getItems = (count: number) =>
@@ -23,17 +23,19 @@ export default function App() {
 
   const renderItem = ({ item, drag, isActive }: any) => {
     return (
-      <TouchableOpacity
-        onLongPress={drag}
-        disabled={isActive}
-        style={[
-          styles.rowItem,
-          { backgroundColor: isActive ? '#111111' : item.backgroundColor },
-        ]}
-      >
-        <Text style={styles.text}>{item.content.label}</Text>
-        <Text>{item.content.subtitle}</Text>
-      </TouchableOpacity>
+      <MyScaleDecorator>
+        <TouchableOpacity
+          onLongPress={drag}
+          disabled={isActive}
+          style={[
+            styles.rowItem,
+            { backgroundColor: isActive ? '#111111' : item.backgroundColor },
+          ]}
+        >
+          <Text style={styles.text}>{item.content.label}</Text>
+          <Text>{item.content.subtitle}</Text>
+        </TouchableOpacity>
+      </MyScaleDecorator>
     );
   };
 

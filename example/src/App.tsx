@@ -12,14 +12,24 @@ import {
 import { MyDraggableList, MyScaleDecorator } from 'react-native-awesome-module';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+const COLORS = ['#FAF1E4', '#CEDEBD', '#9EB384'];
+
+const getBackgroundColor = (index: number) => {
+  return COLORS[index % COLORS.length];
+};
+
 const getItems = (count: number) =>
   Array.from({ length: count }, (_, k) => k).map((k) => ({
     id: `item-${k}`,
-    content: { label: `item ${k}`, subtitle: 'test' },
+    content: {
+      label: `Item #${k}`,
+      subtitle: `Subtitle ${k}`,
+      color: getBackgroundColor(k),
+    },
   }));
 
 export default function App() {
-  const [items, setItems] = useState(getItems(5));
+  const [items, setItems] = useState(getItems(15));
 
   const renderItem = ({ item, drag, isActive }: any) => {
     return (
@@ -29,11 +39,13 @@ export default function App() {
           disabled={isActive}
           style={[
             styles.rowItem,
-            { backgroundColor: isActive ? '#111111' : item.backgroundColor },
+            {
+              backgroundColor: isActive ? '#435334' : item.content.color,
+            },
           ]}
         >
           <Text style={styles.text}>{item.content.label}</Text>
-          <Text>{item.content.subtitle}</Text>
+          <Text style={styles.subtitle}>{item.content.subtitle}</Text>
         </TouchableOpacity>
       </MyScaleDecorator>
     );
@@ -72,9 +84,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: 'red',
+    color: '#435334',
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  subtitle: {
+    color: '#49573c',
   },
 });

@@ -1,7 +1,7 @@
 {
-  "name": "react-native-awesome-module",
-  "version": "0.1.0",
-  "description": "hey",
+  "name": "react-native-x-draggable-list",
+  "version": "1.0.2",
+  "description": "A cross platform compatible draggable list component for React-Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -36,17 +36,17 @@
     "bootstrap": "yarn example && yarn install"
   },
   "keywords": [
-    "react-native",
-    "ios",
-    "android"
+    "React",
+    "React-Native",
+    "Draggable List"
   ],
   "repository": "http://swmansion.com",
   "author": "Jakub Kosmydel <104823336+kosmydel@users.noreply.github.com> (http://swmansion.com)",
   "license": "MIT",
   "bugs": {
-    "url": "http://swmansion.com/issues"
+    "url": "https://github.com/Expensify/react-native-x-draggable-list/issues"
   },
-  "homepage": "http://swmansion.com#readme",
+  "homepage": "https://github.com/Expensify/react-native-x-draggable-list#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

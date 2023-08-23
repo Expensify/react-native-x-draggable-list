@@ -6,15 +6,15 @@ import {
   type OnDragEndResponder,
 } from 'react-beautiful-dnd';
 import { View } from 'react-native';
-import type { Props, Item } from './types';
+import type { DraggableListProps, Item } from './types';
 
-// a little function to help us with reordering the result
 type ReoderParams = {
   list: Item[];
   startIndex: number;
   endIndex: number;
 };
 
+// Function to help us with reordering the result
 const reorder = ({ list, startIndex, endIndex }: ReoderParams) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -26,15 +26,14 @@ const reorder = ({ list, startIndex, endIndex }: ReoderParams) => {
   return result;
 };
 
-export const MyDraggableList = ({
+export const DraggableList = ({
   items,
   renderItem,
   onDragEnd: onDragEndCallback,
   onDragBegin: onDragBegin,
-}: Props) => {
+}: DraggableListProps) => {
   const onDragEnd: OnDragEndResponder = useCallback(
     (result) => {
-      // dropped outside the list
       if (!result.destination) {
         return;
       }
@@ -49,10 +48,6 @@ export const MyDraggableList = ({
     },
     [items, onDragEndCallback]
   );
-
-  const onDragStart = useCallback(() => {
-    onDragBegin && onDragBegin();
-  }, [onDragBegin]);
 
   return (
     <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragBegin}>

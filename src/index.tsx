@@ -1,4 +1,4 @@
 import 'react-native-gesture-handler';
 
-export { MyDraggableList } from './MyDraggableList';
-export { MyScaleDecorator } from './decorators/MyScaleDecorator';
+export { DraggableList } from './DraggableList';
+export { ScaleDecorator } from './decorators/ScaleDecorator';

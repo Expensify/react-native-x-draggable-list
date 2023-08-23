@@ -10,10 +10,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import { MyDraggableList, MyScaleDecorator } from 'react-native-awesome-module';
+import { DraggableList, ScaleDecorator } from 'react-native-x-draggable-list';
 import type { RenderItemParams } from 'react-native-draggable-flatlist';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import type { Item } from 'src/MyDraggableList/types';
+import type { Item } from 'src/DraggableList/types';
 
 const COLORS = {
   LIST: ['#FAF1E4', '#CEDEBD', '#9EB384'],
@@ -54,7 +54,7 @@ export default function App() {
       backgroundColor: isActive ? COLORS.ACTIVE : item.content.color,
     };
     return (
-      <MyScaleDecorator>
+      <ScaleDecorator>
         <TouchableOpacity
           onLongPress={drag}
           disabled={isActive}
@@ -65,7 +65,7 @@ export default function App() {
             <Text style={styles.subtitle}>{item.content.subtitle}</Text>
           </View>
         </TouchableOpacity>
-      </MyScaleDecorator>
+      </ScaleDecorator>
     );
   };
 
@@ -76,7 +76,7 @@ export default function App() {
           <Text style={styles.title}>Draggable demo</Text>
           <Text style={styles.logger}>{lastEvent}</Text>
         </View>
-        <MyDraggableList
+        <DraggableList
           items={items}
           renderItem={renderItem}
           onDragEnd={({ data }: any) => {

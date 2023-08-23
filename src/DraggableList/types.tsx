@@ -5,7 +5,7 @@ export type Item = {
   content: any;
 };
 
-export type Props = {
+export type DraggableListProps = {
   items: Item[];
   renderItem: (params: RenderItemParams<Item>) => React.ReactNode;
   onDragEnd?: (params: { data: Item[] }) => void;

@@ -1,38 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import DraggableFlatList, {
   ScaleDecorator,
   type RenderItemParams,
 } from 'react-native-draggable-flatlist';
 
-const NUM_ITEMS = 10;
-function getColor(i: number) {
-  const multiplier = 255 / (NUM_ITEMS - 1);
-  const colorVal = i * multiplier;
-  return `rgb(${colorVal}, ${Math.abs(128 - colorVal)}, ${255 - colorVal})`;
-}
-
-type Item = {
-  key: string;
-  label: string;
-  height: number;
-  width: number;
-  backgroundColor: string;
+export type Item = {
+  id: string;
+  content: string;
 };
 
-const initialData: Item[] = [...Array(NUM_ITEMS)].map((d, index) => {
-  const backgroundColor = getColor(index);
-  return {
-    key: `item-${index}`,
-    label: String(index) + '',
-    height: 100,
-    width: 60 + Math.random() * 40,
-    backgroundColor,
-  };
-});
+export type Props = {
+  items: Item[];
+  setData: (data: Item[]) => void;
+};
 
-export const MyButton = () => {
-  const [data, setData] = useState(initialData);
+export const MyButton = ({ items, setData }: Props) => {
+  console.log('items', items);
 
   const renderItem = ({ item, drag, isActive }: RenderItemParams<Item>) => {
     return (
@@ -45,7 +29,7 @@ export const MyButton = () => {
             { backgroundColor: isActive ? 'red' : item.backgroundColor },
           ]}
         >
-          <Text style={styles.text}>{item.label}</Text>
+          <Text style={styles.text}>{item.content}</Text>
         </TouchableOpacity>
       </ScaleDecorator>
     );
@@ -53,9 +37,9 @@ export const MyButton = () => {
 
   return (
     <DraggableFlatList
-      data={data}
+      data={items}
       onDragEnd={({ data }) => setData(data)}
-      keyExtractor={(item) => item.key}
+      keyExtractor={(item) => item.id}
       renderItem={renderItem}
     />
   );
@@ -69,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: 'white',
+    color: 'red',
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',

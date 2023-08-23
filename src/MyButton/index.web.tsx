@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
-// fake data generator
-const getItems = (count) =>
-  Array.from({ length: count }, (v, k) => k).map((k) => ({
-    id: `item-${k}`,
-    content: `item ${k}`,
-  }));
+import { View } from 'react-native';
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -38,9 +32,17 @@ const getListStyle = (isDraggingOver) => ({
   width: 250,
 });
 
-export const MyButton = () => {
-  const [items, setItems] = useState(getItems(10));
+export type Item = {
+  id: string;
+  content: string;
+};
 
+export type Props = {
+  items: Item[];
+  setData: (data: Item[]) => void;
+};
+
+export const MyButton = ({ items, setData }: Props) => {
   const onDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {
@@ -53,14 +55,14 @@ export const MyButton = () => {
       result.destination.index
     );
 
-    setItems(reorderedItems);
+    setData(reorderedItems);
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable">
         {(provided, snapshot) => (
-          <div
+          <View
             {...provided.droppableProps}
             ref={provided.innerRef}
             style={getListStyle(snapshot.isDraggingOver)}
@@ -83,7 +85,7 @@ export const MyButton = () => {
               </Draggable>
             ))}
             {provided.placeholder}
-          </div>
+          </View>
         )}
       </Droppable>
     </DragDropContext>

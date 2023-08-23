@@ -30,6 +30,7 @@ export const MyDraggableList = ({
   items,
   renderItem,
   onDragEnd: onDragEndCallback,
+  onDragBegin: onDragBegin,
 }: Props) => {
   const onDragEnd: OnDragEndResponder = useCallback(
     (result) => {
@@ -49,8 +50,12 @@ export const MyDraggableList = ({
     [items, onDragEndCallback]
   );
 
+  const onDragStart = useCallback(() => {
+    onDragBegin && onDragBegin();
+  }, [onDragBegin]);
+
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragBegin}>
       <Droppable droppableId="droppable">
         {(droppableProvided) => (
           <View

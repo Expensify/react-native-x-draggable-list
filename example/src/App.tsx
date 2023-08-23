@@ -49,6 +49,9 @@ export default function App() {
             console.log('onDragEnd', data);
             setItems(data);
           }}
+          onDragBegin={() => {
+            console.log('onDragBegin');
+          }}
         />
       </SafeAreaView>
     </GestureHandlerRootView>

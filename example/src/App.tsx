@@ -11,7 +11,9 @@ import {
   View,
 } from 'react-native';
 import { MyDraggableList, MyScaleDecorator } from 'react-native-awesome-module';
+import type { RenderItemParams } from 'react-native-draggable-flatlist';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import type { Item } from 'src/MyDraggableList/types';
 
 const COLORS = {
   LIST: ['#FAF1E4', '#CEDEBD', '#9EB384'],
@@ -47,8 +49,10 @@ export default function App() {
     setLastEvent(`${event} at ${getCurrentTime()}`);
   };
 
-  const renderItem = ({ item, drag, isActive }: any) => {
-    const backgroundColor = isActive ? COLORS.ACTIVE : item.content.color;
+  const renderItem = ({ item, drag, isActive }: RenderItemParams<Item>) => {
+    const viewStyle = {
+      backgroundColor: isActive ? COLORS.ACTIVE : item.content.color,
+    };
     return (
       <MyScaleDecorator>
         <TouchableOpacity
@@ -56,14 +60,7 @@ export default function App() {
           disabled={isActive}
           onPress={() => logEvent(`onPress ${item.id}`)}
         >
-          <View
-            style={[
-              styles.rowItem,
-              {
-                backgroundColor,
-              },
-            ]}
-          >
+          <View style={[styles.rowItem, viewStyle]}>
             <Text style={styles.text}>{item.content.label}</Text>
             <Text style={styles.subtitle}>{item.content.subtitle}</Text>
           </View>

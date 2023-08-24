@@ -33,7 +33,9 @@
     "prepack": "bob build",
     "release": "release-it",
     "example": "npm --prefix ./example start",
-    "bootstrap": "npm run example && npm install"
+    "bootstrap": "npm run example && npm install",
+    "prettier": "prettier --write .",
+    "prettier-watch": "onchange \"**/*.js\" -- prettier --write --ignore-unknown {{changed}}"
   },
   "keywords": [
     "React",
@@ -75,10 +77,6 @@
   },
   "resolutions": {
     "@types/react": "17.0.21"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
   },
   "engines": {
     "node": ">= 16.0.0"
@@ -159,9 +157,13 @@
   },
   "dependencies": {
     "react-beautiful-dnd": "^13.1.1",
-    "react-dom": "^18.2.0",
-    "react-native-draggable-flatlist": "^4.0.1",
-    "react-native-gesture-handler": "^2.12.1",
-    "react-native-reanimated": "3.3.0"
+    "react-native-draggable-flatlist": "^4.0.1"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-dom": "^16.8.5 || ^17.0.0 || ^18.0.0",
+    "react-native-gesture-handler": "~2.2.1",
+    "react-native-reanimated": "~2.10.0"
   }
 }

@@ -7,16 +7,16 @@ import {
   type OnDragUpdateResponder,
 } from 'react-beautiful-dnd';
 import { View } from 'react-native';
-import type { DraggableListProps, Item } from './types';
+import type { DraggableListProps, DefaultItemProps } from './types';
 
-type ReoderParams = {
-  list: Item[];
+type ReoderParams<T> = {
+  list: T[];
   startIndex: number;
   endIndex: number;
 };
 
 // Function to help us with reordering the result
-const reorder = ({ list, startIndex, endIndex }: ReoderParams) => {
+const reorder = <T,>({ list, startIndex, endIndex }: ReoderParams<T>): T[] => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
 
@@ -27,13 +27,13 @@ const reorder = ({ list, startIndex, endIndex }: ReoderParams) => {
   return result;
 };
 
-export const DraggableList = ({
+export const DraggableList = <T extends DefaultItemProps>({
   items,
   renderItem,
   onDragEnd: onDragEndCallback,
   onDragBegin: onDragBegin,
   onPlaceholderIndexChange,
-}: DraggableListProps) => {
+}: DraggableListProps<T>) => {
   const onDragEnd: OnDragEndResponder = useCallback(
     (result) => {
       if (!result.destination) {

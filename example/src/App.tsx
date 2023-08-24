@@ -13,8 +13,6 @@ import {
 import { DraggableList, ScaleDecorator } from 'react-native-x-draggable-list';
 import type { RenderItemParams } from 'react-native-draggable-flatlist';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import type { Item } from 'src/DraggableList/types';
-import * as Haptics from 'expo-haptics';
 
 const COLORS = {
   LIST: ['#FAF1E4', '#CEDEBD', '#9EB384'],
@@ -25,10 +23,19 @@ const COLORS = {
 };
 
 const getBackgroundColor = (index: number) => {
-  return COLORS.LIST[index % COLORS.LIST.length];
+  return COLORS.LIST[index % COLORS.LIST.length] ?? 'white';
 };
 
-const getItems = (count: number) =>
+export type Item = {
+  id: string;
+  content: {
+    label: string;
+    subtitle: string;
+    color: string;
+  };
+};
+
+const getItems = (count: number): Item[] =>
   Array.from({ length: count }, (_, k) => k).map((k) => ({
     id: `item-${k}`,
     content: {
@@ -41,8 +48,6 @@ const getItems = (count: number) =>
 const getCurrentTime = () => {
   return new Date().toLocaleTimeString();
 };
-
-const isNative = Platform.OS === 'ios' || Platform.OS === 'android';
 
 export default function App() {
   const [items, setItems] = useState(getItems(15));
@@ -82,29 +87,14 @@ export default function App() {
         <DraggableList
           items={items}
           renderItem={renderItem}
-          onDragEnd={({ data }: any) => {
+          onDragEnd={({ data }) => {
             logEvent('onDragEnd');
             setItems(data);
-            if (isNative) {
-              Haptics.notificationAsync(
-                Haptics.NotificationFeedbackType.Success
-              );
-            }
           }}
-          onDragBegin={() => {
-            logEvent('onDragBegin');
-            if (isNative) {
-              Haptics.notificationAsync(
-                Haptics.NotificationFeedbackType.Success
-              );
-            }
-          }}
-          onPlaceholderIndexChange={(index: number) => {
-            logEvent(`onPlaceholderIndexChange ${index}`);
-            if (isNative) {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-            }
-          }}
+          onDragBegin={() => logEvent('onDragBegin')}
+          onPlaceholderIndexChange={(index: number) =>
+            logEvent(`onPlaceholderIndexChange ${index}`)
+          }
         />
       </SafeAreaView>
     </GestureHandlerRootView>

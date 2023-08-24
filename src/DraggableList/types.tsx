@@ -1,14 +1,13 @@
 import type { RenderItemParams } from 'react-native-draggable-flatlist';
 
-export type Item = {
+export type DefaultItemProps = {
   id: string;
-  content: any;
 };
 
-export type DraggableListProps = {
-  items: Item[];
-  renderItem: (params: RenderItemParams<Item>) => React.ReactNode;
-  onDragEnd?: (params: { data: Item[] }) => void;
+export type DraggableListProps<T extends DefaultItemProps> = {
+  items: T[];
+  renderItem: (params: RenderItemParams<T>) => React.ReactNode;
+  onDragEnd?: (params: { data: T[] }) => void;
   onDragBegin?: () => void;
   onPlaceholderIndexChange?: ((placeholderIndex: number) => void) | undefined;
 };

@@ -1,8 +1,11 @@
 import React from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import type { DraggableListProps } from './types';
+import type { DefaultItemProps, DraggableListProps } from './types';
 
-export const DraggableList = ({ items, ...props }: DraggableListProps) => {
+export const DraggableList = <T extends DefaultItemProps>({
+  items,
+  ...props
+}: DraggableListProps<T>) => {
   return (
     <DraggableFlatList
       data={items}

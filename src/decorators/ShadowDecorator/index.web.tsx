@@ -1,5 +1,5 @@
 import type { Props } from '../types';
 
-export function ScaleDecorator({ children }: Props) {
+export function ShadowDecorator({ children }: Props) {
   return children;
 }

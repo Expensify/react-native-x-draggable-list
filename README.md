@@ -1,6 +1,6 @@
 # react-native-x-draggable-list
 
-hey
+A cross platform compatible draggable list component for React-Native
 
 ## Installation
 
@@ -9,6 +9,7 @@ npm install react-native-x-draggable-list
 ```
 
 ## Usage
+The example usage is avaiable in the `/example` directory.
 
 ```js
 import { DraggableList } from 'react-native-x-draggable-list';

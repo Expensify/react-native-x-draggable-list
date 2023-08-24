@@ -46,7 +46,7 @@ export const DraggableList = <T extends DefaultItemProps>({
         endIndex: result.destination.index,
       });
 
-      onDragEndCallback && onDragEndCallback({ data: reorderedItems });
+      onDragEndCallback?.({ data: reorderedItems });
     },
     [items, onDragEndCallback]
   );
@@ -56,8 +56,7 @@ export const DraggableList = <T extends DefaultItemProps>({
       if (!result.destination) {
         return;
       }
-      onPlaceholderIndexChange &&
-        onPlaceholderIndexChange(result.destination.index);
+      onPlaceholderIndexChange?.(result.destination.index);
     },
     [onPlaceholderIndexChange]
   );

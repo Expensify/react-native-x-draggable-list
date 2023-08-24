@@ -12,5 +12,4 @@ export type DraggableListProps<T extends DefaultItemProps> = {
   onPlaceholderIndexChange?: ((placeholderIndex: number) => void) | undefined;
 };
 
-export type RenderItemParams<T extends DefaultItemProps> =
-  OriginalRenderItemParams<T>;
+export type RenderItemParams<T> = OriginalRenderItemParams<T>;

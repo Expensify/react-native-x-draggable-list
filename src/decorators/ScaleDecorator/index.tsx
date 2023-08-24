@@ -1,9 +1,11 @@
 import React from 'react';
-import { ScaleDecorator } from 'react-native-draggable-flatlist';
+import { ScaleDecorator as ScaleDecoratorDraggableFlatlist } from 'react-native-draggable-flatlist';
 import type { Props } from '../types';
 
-function CustomScaleDecorator({ children }: Props) {
-  return <ScaleDecorator>{children}</ScaleDecorator>;
+export function ScaleDecorator({ children }: Props) {
+  return (
+    <ScaleDecoratorDraggableFlatlist>
+      {children}
+    </ScaleDecoratorDraggableFlatlist>
+  );
 }
-
-export { CustomScaleDecorator as ScaleDecorator };

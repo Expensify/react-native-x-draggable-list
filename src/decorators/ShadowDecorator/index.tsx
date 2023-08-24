@@ -1,9 +1,11 @@
 import React from 'react';
-import { ShadowDecorator } from 'react-native-draggable-flatlist';
+import { ShadowDecorator as ShadowDecoratorDraggableFlatlist } from 'react-native-draggable-flatlist';
 import type { Props } from '../types';
 
-function CustomShadowDecorator({ children }: Props) {
-  return <ShadowDecorator>{children}</ShadowDecorator>;
+export function ShadowDecorator({ children }: Props) {
+  return (
+    <ShadowDecoratorDraggableFlatlist>
+      {children}
+    </ShadowDecoratorDraggableFlatlist>
+  );
 }
-
-export { CustomShadowDecorator as ShadowDecorator };

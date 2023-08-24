@@ -1,21 +1,21 @@
-# react-native-awesome-module
+# react-native-x-draggable-list
 
 hey
 
 ## Installation
 
 ```sh
-npm install react-native-awesome-module
+npm install react-native-x-draggable-list
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-awesome-module';
+import { DraggableList } from 'react-native-x-draggable-list';
 
 // ...
 
-const result = await multiply(3, 7);
+<DraggableList />
 ```
 
 ## Contributing

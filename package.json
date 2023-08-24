@@ -32,8 +32,8 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
     "release": "release-it",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install"
+    "example": "npm --prefix ./example start",
+    "bootstrap": "npm run example && npm install"
   },
   "keywords": [
     "React",

@@ -1,11 +1,10 @@
-import * as React from 'react';
 import { useState } from 'react';
 
 import { SafeAreaView, TouchableOpacity, Text, View } from 'react-native';
 import DraggableList, { ScaleDecorator } from 'react-native-x-draggable-list';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { COLORS, getBackgroundColor, getCurrentTime, styles } from './utils';
 import type { RenderItemParams } from 'src/DraggableList/types';
+import { COLORS, getBackgroundColor, getCurrentTime, styles } from './utils';
 
 /**
  * Type of the item in the list
@@ -68,7 +67,8 @@ export default function App() {
           <Text style={styles.logger}>{lastEvent}</Text>
         </View>
         <DraggableList
-          items={items}
+          data={items}
+          keyExtractor={(item: Item) => item.id}
           renderItem={renderItem}
           onDragEnd={({ data }) => {
             logEvent('onDragEnd');

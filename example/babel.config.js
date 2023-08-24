@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 const path = require('path');
 const pak = require('../package.json');
 

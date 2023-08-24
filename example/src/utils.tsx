@@ -8,13 +8,9 @@ const COLORS = {
   LIGHT: '#FAF1E4',
 };
 
-const getBackgroundColor = (index: number) => {
-  return COLORS.LIST[index % COLORS.LIST.length] ?? 'white';
-};
+const getBackgroundColor = (index: number) => COLORS.LIST[index % COLORS.LIST.length] ?? 'white';
 
-const getCurrentTime = () => {
-  return new Date().toLocaleTimeString();
-};
+const getCurrentTime = () => new Date().toLocaleTimeString();
 
 const styles = StyleSheet.create({
   container: {

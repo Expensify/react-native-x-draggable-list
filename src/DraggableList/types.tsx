@@ -5,7 +5,8 @@ export type DefaultItemProps = {
 };
 
 export type DraggableListProps<T extends DefaultItemProps> = {
-  items: T[];
+  data: T[];
+  keyExtractor: (item: T, index: number) => string;
   renderItem: (params: RenderItemParams<T>) => React.ReactNode;
   onDragEnd?: (params: { data: T[] }) => void;
   onDragBegin?: () => void;

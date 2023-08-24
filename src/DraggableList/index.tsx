@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   DragDropContext,
   Droppable,
@@ -27,13 +27,13 @@ const reorder = <T,>({ list, startIndex, endIndex }: ReoderParams<T>): T[] => {
   return result;
 };
 
-export const DraggableList = <T extends DefaultItemProps>({
-  items,
+export default function DraggableList<T extends DefaultItemProps>({
+  data,
   renderItem,
   onDragEnd: onDragEndCallback,
-  onDragBegin: onDragBegin,
+  onDragBegin,
   onPlaceholderIndexChange,
-}: DraggableListProps<T>) => {
+}: DraggableListProps<T>) {
   const onDragEnd: OnDragEndResponder = useCallback(
     (result) => {
       if (!result.destination) {
@@ -41,14 +41,14 @@ export const DraggableList = <T extends DefaultItemProps>({
       }
 
       const reorderedItems = reorder({
-        list: items,
+        list: data,
         startIndex: result.source.index,
         endIndex: result.destination.index,
       });
 
       onDragEndCallback?.({ data: reorderedItems });
     },
-    [items, onDragEndCallback]
+    [data, onDragEndCallback]
   );
 
   const onDragUpdate: OnDragUpdateResponder = useCallback(
@@ -73,7 +73,7 @@ export const DraggableList = <T extends DefaultItemProps>({
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
           >
-            {items.map((item, index) => (
+            {data.map((item, index) => (
               <Draggable key={item.id} draggableId={item.id} index={index}>
                 {(draggableProvided, snapshot) => (
                   <div
@@ -97,4 +97,4 @@ export const DraggableList = <T extends DefaultItemProps>({
       </Droppable>
     </DragDropContext>
   );
-};
+}

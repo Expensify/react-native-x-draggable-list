@@ -1,8 +1,11 @@
-import { DraggableList } from './DraggableList';
 import 'react-native-gesture-handler';
 
-export { OpacityDecorator } from './decorators/OpacityDecorator';
-export { ScaleDecorator } from './decorators/ScaleDecorator';
-export { ShadowDecorator } from './decorators/ShadowDecorator';
+import DraggableList from './DraggableList';
+
+import OpacityDecorator from './decorators/OpacityDecorator';
+import ScaleDecorator from './decorators/ScaleDecorator';
+import ShadowDecorator from './decorators/ShadowDecorator';
+
+export { OpacityDecorator, ScaleDecorator, ShadowDecorator };
 
 export default DraggableList;

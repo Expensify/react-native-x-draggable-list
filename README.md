@@ -1,6 +1,24 @@
 # react-native-x-draggable-list
 
-A cross platform compatible draggable list component for React-Native
+A cross-platform compatible draggable list component for React-Native
+
+## Running example
+Currently, we are using yarn. At the root of the project run:
+```sh
+yarn
+```
+
+```sh
+# Select platform
+yarn example web
+yarn example ios
+yarn example android
+```
+
+TIP: After running command for the first time, you can in that Window open other platforms by pressing: w / i / a (Web / iOS / Android).
+
+Now, you can modify the `example/src/App.tsx` and play around.
+
 
 ## Installation
 1. Follow installation instructions for [reanimated](https://github.com/kmagiera/react-native-reanimated) and [react-native-gesture-handler](https://github.com/kmagiera/react-native-gesture-handler). RNGH may require you to make changes to `MainActivity.java`. Be sure to [follow all Android instructions!](https://docs.swmansion.com/react-native-gesture-handler/docs/#android)
@@ -44,11 +62,11 @@ import DraggableList from 'react-native-x-draggable-list';
 
 # Deploying
 
-This repo automatically publishes to NPM when PRs are merged to main.
+This repo automatically publishes to NPM when PRs are merged to the main.
 
 ## Contributing
 
-Right now, contributions to this library are done under https://github.com/Expensify/App. Please refer to that repo and all it's guidelines for contributing.
+Right now, contributions to this library are done under https://github.com/Expensify/App. Please refer to that repo and all its guidelines for contributing.
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 

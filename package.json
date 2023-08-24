@@ -19,8 +19,8 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
     "release": "release-it",
-    "example": "npm --prefix ./example start",
-    "bootstrap": "npm install && npm run example",
+    "example": "yarn --cwd example",
+    "bootstrap": "yarn example && yarn install",
     "prettier": "prettier --write .",
     "prettier-watch": "onchange \"**/*.js\" -- prettier --write --ignore-unknown {{changed}}"
   },

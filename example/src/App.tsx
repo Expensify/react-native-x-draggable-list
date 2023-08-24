@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import { SafeAreaView, TouchableOpacity, Text, View } from 'react-native';
-import { DraggableList, ScaleDecorator } from 'react-native-x-draggable-list';
+import DraggableList, { ScaleDecorator } from 'react-native-x-draggable-list';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { COLORS, getBackgroundColor, getCurrentTime, styles } from './utils';
 import type { RenderItemParams } from 'src/DraggableList/types';

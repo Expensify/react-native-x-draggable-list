@@ -35,6 +35,7 @@ export default function DraggableList<T extends DefaultItemProps>({
   onDragEnd: onDragEndCallback,
   onDragBegin,
   onPlaceholderIndexChange,
+  renderClone,
 }: DraggableListProps<T>) {
   const onDragEnd: OnDragEndResponder = useCallback(
     (result) => {
@@ -69,7 +70,7 @@ export default function DraggableList<T extends DefaultItemProps>({
       onDragStart={onDragBegin}
       onDragUpdate={onDragUpdate}
     >
-      <Droppable droppableId="droppable">
+      <Droppable droppableId="droppable" renderClone={renderClone}>
         {(droppableProvided) => (
           <View
             {...droppableProvided.droppableProps}

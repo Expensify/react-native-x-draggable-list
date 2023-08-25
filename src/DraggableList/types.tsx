@@ -1,3 +1,4 @@
+import type { DraggableChildrenFn } from 'react-beautiful-dnd';
 import type { RenderItemParams as OriginalRenderItemParams } from 'react-native-draggable-flatlist';
 
 export type DefaultItemProps = {
@@ -11,6 +12,7 @@ export type DraggableListProps<T extends DefaultItemProps> = {
   onDragEnd?: (params: { data: T[] }) => void;
   onDragBegin?: () => void;
   onPlaceholderIndexChange?: ((placeholderIndex: number) => void) | undefined;
+  renderClone?: DraggableChildrenFn | undefined
 };
 
 export type RenderItemParams<T> = OriginalRenderItemParams<T>;

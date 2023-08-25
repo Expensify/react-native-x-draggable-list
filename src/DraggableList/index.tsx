@@ -7,6 +7,7 @@ import {
   type OnDragUpdateResponder,
 } from 'react-beautiful-dnd';
 import { View } from 'react-native';
+import _ from 'lodash';
 import type { DraggableListProps, DefaultItemProps } from './types';
 
 type ReoderParams<T> = {
@@ -74,7 +75,7 @@ export default function DraggableList<T extends DefaultItemProps>({
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
           >
-            {data.map((item, index) => {
+            {_.map(data, (item, index) => {
               const key = keyExtractor(item, index);
               return (
                 <Draggable key={key} draggableId={key} index={index}>

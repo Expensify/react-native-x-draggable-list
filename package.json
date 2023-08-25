@@ -1,6 +1,6 @@
 {
   "name": "react-native-x-draggable-list",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A cross platform compatible draggable list component for React-Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -37,19 +37,33 @@
   },
   "homepage": "https://github.com/Expensify/react-native-x-draggable-list#readme",
   "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
     "@react-native-community/eslint-config": "^3.0.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
+    "@types/lodash": "^4.14.197",
     "@types/react": "~17.0.21",
     "@types/react-beautiful-dnd": "^13.1.4",
     "@types/react-native": "0.70.0",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
     "commitlint": "^17.0.2",
     "del-cli": "^5.0.0",
     "eslint": "^8.4.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^28.1.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
@@ -57,20 +71,7 @@
     "react-native": "0.72.4",
     "react-native-builder-bob": "^0.20.0",
     "release-it": "^15.0.0",
-    "typescript": "^5.0.2",
-    "@babel/cli": "^7.22.9",
-    "@babel/core": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
-    "@babel/preset-react": "^7.22.5",
-    "@babel/preset-typescript": "^7.22.5",
-    "@typescript-eslint/parser": "^6.2.1",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-plugin-import": "^2.28.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.33.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "@typescript-eslint/eslint-plugin": "^6.2.1"
+    "typescript": "^5.0.2"
   },
   "resolutions": {
     "@types/react": "17.0.21"
@@ -78,7 +79,7 @@
   "engines": {
     "node": "16.15.1",
     "npm": "8.11.0"
-},
+  },
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
@@ -153,13 +154,14 @@
     ]
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "react-beautiful-dnd": "^13.1.1",
     "react-native-draggable-flatlist": "^4.0.1"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*",
     "react-dom": "^16.8.5 || ^17.0.0 || ^18.0.0",
+    "react-native": "*",
     "react-native-gesture-handler": ">=2.2.1",
     "react-native-reanimated": ">=2.10.0",
     "react-native-web": ">=0.19.6"

@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  ignorePatterns: ['node_modules', 'dist'],
+  ignorePatterns: ['node_modules', 'dist', 'example'],
   plugins: ['react', 'jsx-a11y', '@typescript-eslint'],
   extends: [
     'eslint:recommended',
@@ -52,6 +52,10 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          { varsIgnorePattern: 'React' },
+        ],
       },
     },
   ],

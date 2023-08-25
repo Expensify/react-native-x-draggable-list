@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { SafeAreaView, TouchableOpacity, Text, View } from 'react-native';
 import DraggableList, { ScaleDecorator } from 'react-native-x-draggable-list';

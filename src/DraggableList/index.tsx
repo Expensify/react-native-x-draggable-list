@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {
   DragDropContext,
   Droppable,
@@ -28,7 +28,7 @@ const reorder = <T,>({ list, startIndex, endIndex }: ReoderParams<T>): T[] => {
 };
 
 export default function DraggableList<T extends DefaultItemProps>({
-  data,
+  data = [],
   renderItem,
   onDragEnd: onDragEndCallback,
   onDragBegin,

@@ -1,3 +1,4 @@
+import React from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import type { DefaultItemProps, DraggableListProps } from './types';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { OpacityDecorator as OpacityDecoratorDraggableFlatlist } from 'react-native-draggable-flatlist';
 import type { Props } from '../types';
 

@@ -30,6 +30,7 @@ const reorder = <T,>({ list, startIndex, endIndex }: ReoderParams<T>): T[] => {
 export default function DraggableList<T extends DefaultItemProps>({
   data = [],
   renderItem,
+  keyExtractor,
   onDragEnd: onDragEndCallback,
   onDragBegin,
   onPlaceholderIndexChange,
@@ -73,8 +74,10 @@ export default function DraggableList<T extends DefaultItemProps>({
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
           >
-            {data.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
+            {data.map((item, index) => {
+              const key = keyExtractor(item, index);
+              return (
+                <Draggable key={key} draggableId={key} index={index}>
                 {(draggableProvided, snapshot) => (
                   <div
                     ref={draggableProvided.innerRef}
@@ -83,14 +86,16 @@ export default function DraggableList<T extends DefaultItemProps>({
                   >
                     {renderItem({
                       item,
-                      getIndex: () => 1,
+                      getIndex: () => index,
                       isActive: snapshot.isDragging,
                       drag: () => {},
                     })}
                   </div>
                 )}
               </Draggable>
-            ))}
+              )
+            }
+            )}
             {droppableProvided.placeholder}
           </View>
         )}

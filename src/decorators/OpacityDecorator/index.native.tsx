@@ -1,11 +1,7 @@
 import React from 'react';
-import { OpacityDecorator as OpacityDecoratorDraggableFlatlist } from 'react-native-draggable-flatlist';
-import type { Props } from '../types';
+import {OpacityDecorator as OpacityDecoratorDraggableFlatlist} from 'react-native-draggable-flatlist';
+import type {Props} from '../types';
 
-export default function OpacityDecorator({ children }: Props) {
-  return (
-    <OpacityDecoratorDraggableFlatlist>
-      {children}
-    </OpacityDecoratorDraggableFlatlist>
-  );
+export default function OpacityDecorator({children}: Props) {
+    return <OpacityDecoratorDraggableFlatlist>{children}</OpacityDecoratorDraggableFlatlist>;
 }

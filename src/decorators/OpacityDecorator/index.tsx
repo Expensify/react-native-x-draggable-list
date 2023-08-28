@@ -1,5 +1,5 @@
-import type { Props } from '../types';
+import type {Props} from '../types';
 
-export default function OpacityDecorator({ children }: Props) {
-  return children;
+export default function OpacityDecorator({children}: Props) {
+    return children;
 }

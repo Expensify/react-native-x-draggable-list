@@ -1,5 +1,5 @@
-import type { Props } from '../types';
+import type {Props} from '../types';
 
-export default function ScaleDecorator({ children }: Props) {
-  return children;
+export default function ScaleDecorator({children}: Props) {
+    return children;
 }

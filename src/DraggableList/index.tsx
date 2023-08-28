@@ -7,6 +7,7 @@ import {
   type OnDragUpdateResponder,
 } from 'react-beautiful-dnd';
 import _ from 'lodash';
+import { ScrollView } from 'react-native';
 import useDraggableInPortal from '../utils/useDraggableInPortal';
 import type { DraggableListProps, DefaultItemProps } from './types';
 
@@ -75,33 +76,37 @@ export default function DraggableList<T extends DefaultItemProps>({
     >
       <Droppable droppableId="droppable" renderClone={renderClone}>
         {(droppableProvided) => (
-          <div
-            {...droppableProvided.droppableProps}
-            ref={droppableProvided.innerRef}
-          >
-            {_.map(data, (item, index) => {
-              const key = keyExtractor(item, index);
-              return (
-                <Draggable key={key} draggableId={key} index={index}>
-                  {renderDraggable((draggableProvided, snapshot) => (
-                    <div
-                      ref={draggableProvided.innerRef}
-                      {...draggableProvided.draggableProps}
-                      {...draggableProvided.dragHandleProps}
-                    >
-                      {renderItem({
-                        item,
-                        getIndex: () => index,
-                        isActive: snapshot.isDragging,
-                        drag: () => {},
-                      })}
-                    </div>
-                  ))}
-                </Draggable>
-              );
-            })}
-            {droppableProvided.placeholder}
-          </div>
+          // We use ScrollView to match the native behavior of FlatList
+          <ScrollView>
+            {/* We can't use the react-native View here, because it doesn't support all props */}
+            <div
+              {...droppableProvided.droppableProps}
+              ref={droppableProvided.innerRef}
+            >
+              {_.map(data, (item, index) => {
+                const key = keyExtractor(item, index);
+                return (
+                  <Draggable key={key} draggableId={key} index={index}>
+                    {renderDraggable((draggableProvided, snapshot) => (
+                      <div
+                        ref={draggableProvided.innerRef}
+                        {...draggableProvided.draggableProps}
+                        {...draggableProvided.dragHandleProps}
+                      >
+                        {renderItem({
+                          item,
+                          getIndex: () => index,
+                          isActive: snapshot.isDragging,
+                          drag: () => {},
+                        })}
+                      </div>
+                    ))}
+                  </Draggable>
+                );
+              })}
+              {droppableProvided.placeholder}
+            </div>
+          </ScrollView>
         )}
       </Droppable>
     </DragDropContext>

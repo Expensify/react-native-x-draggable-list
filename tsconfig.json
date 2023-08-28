@@ -2,18 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-x-draggable-list": [
-        "./src/index"
-      ]
+      "react-native-x-draggable-list": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

@@ -1,6 +1,6 @@
 {
   "name": "react-native-x-draggable-list",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A cross platform compatible draggable list component for React-Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -50,6 +50,7 @@
     "@types/lodash": "^4.14.197",
     "@types/react": "~17.0.21",
     "@types/react-beautiful-dnd": "^13.1.4",
+    "@types/react-dom": "^18.2.7",
     "@types/react-native": "0.70.0",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
@@ -156,11 +157,11 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.0.0",
     "react-native-draggable-flatlist": "^4.0.1"
   },
   "peerDependencies": {
     "react": "*",
-    "react-dom": "^16.8.5 || ^17.0.0 || ^18.0.0",
     "react-native": "*",
     "react-native-gesture-handler": ">=2.2.1",
     "react-native-reanimated": ">=2.10.0",

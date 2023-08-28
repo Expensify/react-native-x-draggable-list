@@ -6,8 +6,8 @@ import {
   type OnDragEndResponder,
   type OnDragUpdateResponder,
 } from 'react-beautiful-dnd';
-import { View } from 'react-native';
 import _ from 'lodash';
+import useDraggableInPortal from '../utils/useDraggableInPortal';
 import type { DraggableListProps, DefaultItemProps } from './types';
 
 type ReoderParams<T> = {
@@ -36,6 +36,7 @@ export default function DraggableList<T extends DefaultItemProps>({
   onDragBegin,
   onPlaceholderIndexChange,
   renderClone,
+  shouldUsePortal = false,
 }: DraggableListProps<T>) {
   const onDragEnd: OnDragEndResponder = useCallback(
     (result) => {
@@ -64,6 +65,8 @@ export default function DraggableList<T extends DefaultItemProps>({
     [onPlaceholderIndexChange]
   );
 
+  const renderDraggable = useDraggableInPortal({ shouldUsePortal });
+
   return (
     <DragDropContext
       onDragEnd={onDragEnd}
@@ -72,7 +75,7 @@ export default function DraggableList<T extends DefaultItemProps>({
     >
       <Droppable droppableId="droppable" renderClone={renderClone}>
         {(droppableProvided) => (
-          <View
+          <div
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
           >
@@ -80,26 +83,25 @@ export default function DraggableList<T extends DefaultItemProps>({
               const key = keyExtractor(item, index);
               return (
                 <Draggable key={key} draggableId={key} index={index}>
-                {(draggableProvided, snapshot) => (
-                  <div
-                    ref={draggableProvided.innerRef}
-                    {...draggableProvided.draggableProps}
-                    {...draggableProvided.dragHandleProps}
-                  >
-                    {renderItem({
-                      item,
-                      getIndex: () => index,
-                      isActive: snapshot.isDragging,
-                      drag: () => {},
-                    })}
-                  </div>
-                )}
-              </Draggable>
-              )
-            }
-            )}
+                  {renderDraggable((draggableProvided, snapshot) => (
+                    <div
+                      ref={draggableProvided.innerRef}
+                      {...draggableProvided.draggableProps}
+                      {...draggableProvided.dragHandleProps}
+                    >
+                      {renderItem({
+                        item,
+                        getIndex: () => index,
+                        isActive: snapshot.isDragging,
+                        drag: () => {},
+                      })}
+                    </div>
+                  ))}
+                </Draggable>
+              );
+            })}
             {droppableProvided.placeholder}
-          </View>
+          </div>
         )}
       </Droppable>
     </DragDropContext>

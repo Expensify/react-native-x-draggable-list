@@ -12,7 +12,8 @@ export type DraggableListProps<T extends DefaultItemProps> = {
   onDragEnd?: (params: { data: T[] }) => void;
   onDragBegin?: () => void;
   onPlaceholderIndexChange?: ((placeholderIndex: number) => void) | undefined;
-  renderClone?: DraggableChildrenFn | undefined
+  renderClone?: DraggableChildrenFn | undefined;
+  shouldUsePortal?: boolean;
 };
 
 export type RenderItemParams<T> = OriginalRenderItemParams<T>;

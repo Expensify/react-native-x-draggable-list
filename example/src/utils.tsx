@@ -8,7 +8,8 @@ const COLORS = {
   LIGHT: '#FAF1E4',
 };
 
-const getBackgroundColor = (index: number) => COLORS.LIST[index % COLORS.LIST.length] ?? 'white';
+const getBackgroundColor = (index: number) =>
+  COLORS.LIST[index % COLORS.LIST.length] ?? 'white';
 
 const getCurrentTime = () => new Date().toLocaleTimeString();
 

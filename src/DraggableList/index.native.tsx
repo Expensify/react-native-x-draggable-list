@@ -6,6 +6,6 @@ import type { DefaultItemProps, DraggableListProps } from './types';
 export default function DraggableList<T extends DefaultItemProps>({
   ...props
 }: DraggableListProps<T>) {
-  const viewProps = _.omit(props, ['renderClone']);
+  const viewProps = _.omit(props, ['renderClone', 'shouldUsePortal']);
   return <DraggableFlatList {...viewProps} />;
 }

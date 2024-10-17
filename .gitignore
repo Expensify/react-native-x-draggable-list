@@ -10,6 +10,3 @@ npm-debug.log
 
 # IDEs
 .idea
-
-# Decrypted private key we do not want to commit
-.github/OSBotify-private-key.asc

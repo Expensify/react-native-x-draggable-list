@@ -12,14 +12,14 @@ jobs:
             - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
             # v4.2.3
-            - uses: actions/cache@2987038a8f76b181ac42d48b6aaafde60974707c
+            - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
               with:
                   path: ~/.npm
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
                       ${{ runner.os }}-node-
 
-            # actions/setup-node@v4.3.0
+            # v4.3.0
             - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e
               with:
                 node-version-file: '.nvmrc'
